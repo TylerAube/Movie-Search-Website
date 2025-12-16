@@ -17,7 +17,7 @@ function searchMovies() {
   statusMessage.textContent = "Loading movies...";
   movieList.innerHTML = "";
 
-  fetch(`http://www.omdbapi.com/?apikey=95566ec3&s=${searchTerm}`)
+  fetch(`https://www.omdbapi.com/?apikey=95566ec3&s=${searchTerm}`)
     .then(res => res.json())
     .then(data => {
       statusMessage.textContent = "";
