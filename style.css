@@ -226,3 +226,81 @@ button:hover {
     padding: 4px 10px;
     border-radius: 999px;
 }
+
+/* MOBILE (ANDROID, APPLE & SMALL SCREENS */
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    /* NAV BAR */
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 18px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+        min-height: 75vh;
+        padding: 0 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* SEARCH BAR */
+    .search-area {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    /* MOVIE */
+    .movie-list {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .movie-card img {
+        height: 280px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    
+    /* HERO */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    /* MOVIE */
+    .movie-list {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
+
+    .movie-card img {
+        height: 300px;
+    }
+
+
+}
