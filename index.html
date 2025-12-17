@@ -25,6 +25,18 @@
         <div class="search-area">
             <input type="text" id="searchInput" placeholder="Search for a movie...">
             <button id="searchBtn">Search</button>
+            <div class="controls">
+                <select id="sortSelect" class="sort-dropdown">
+                    <option value="">Sort by</option>
+                    <option value="az">Title (A-Z)</option>
+                    <option value="za">Title (ZA)</option>
+                </select>
+                <select id="yearSort">
+                    <option value="">Year</option>
+                    <option value="new">Newest → Oldest</option>
+                    <option value="old">Oldest → Newest</option>
+                </select>
+            </div>
         </div>
     </div>
     <div id="statusMessage"></div>
@@ -33,4 +45,4 @@
     <script src="script.js"></script>
 </body>
 
-</html>
+</html>+

@@ -19,6 +19,21 @@ body {
         animation: gradientShift 20s ease infinite;
 }
 
+select {
+    padding: 10px 14px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
 .hero {
     min-height: 70vh;
     display: flex;
@@ -125,7 +140,7 @@ input:focus {
 }
 
 button {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #9376e4, #fad0c4);
     color: #333;
     font-weight: 600;
     padding: 12px 22px;
@@ -227,6 +242,8 @@ button:hover {
     border-radius: 999px;
 }
 
+
+
 /* MOBILE (ANDROID, APPLE & SMALL SCREENS */
 
 @media (max-width: 600px) {
@@ -274,6 +291,33 @@ button:hover {
         width: 100%;
     }
 
+    .search-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .search-controls input,
+    .search-controls button,
+    .search-controls select {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .search-controls button {
+        border-radius: 999px;
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+    }
+
+    select {
+        width: 110px;
+    }
+
+
     /* MOVIE */
     .movie-list {
         grid-template-columns: 1fr;
@@ -281,7 +325,13 @@ button:hover {
     }
 
     .movie-card img {
-        height: 280px;
+        height: 500px;
+        object-fit: cover;
+    }
+
+    .movie-card {
+        max-width: 90%;
+        margin: 0 auto;
     }
 }
 

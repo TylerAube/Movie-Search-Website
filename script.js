@@ -1,16 +1,22 @@
 const searchBtn = document.getElementById("searchBtn");
 const movieList = document.getElementById("movieList");
 const statusMessage = document.getElementById("statusMessage");
+const sortSelect = document.getElementById("sortSelect");
+const yearSort = document.getElementById("yearSort");
+
+let moviesData = [];
 
 searchBtn.addEventListener("click", searchMovies);
-
+sortSelect.addEventListener("change", applyFilters);
+yearSort.addEventListener("change", applyFilters);
 
 function searchMovies() {
   document.getElementById("hero").classList.add("searched");
+
   const searchTerm = document.getElementById("searchInput").value.trim();
 
   if (!searchTerm) {
-    statusMessage.textContent = "Please enter a movie name 🎥";
+    statusMessage.textContent = "Please enter a movie name 🎬";
     return;
   }
 
@@ -27,29 +33,51 @@ function searchMovies() {
         return;
       }
 
-      data.Search.forEach(movie => {
-        const poster =
-          movie.Poster !== "N/A"
-            ? movie.Poster
-            : "https://via.placeholder.com/300x450?text=No+Image";
-
-        movieList.innerHTML += `
-          <div class="movie-card">
-            <img src="${poster}" alt="${movie.Title}">
-            <h3>${movie.Title}</h3>
-            <p>${movie.Year}</p>
-          </div>
-        `;
-      });
+      moviesData = data.Search;
+      renderMovies(moviesData);
     })
     .catch(() => {
       statusMessage.textContent = "Something went wrong. Try again later.";
     });
 }
 
-document.getElementById("resetHome").addEventListener("click", () => {
-  document.getElementById("hero").classList.remove("searched");
-  document.getElementById("movieList").innerHTML = "";
-  document.getElementById("statusMessage").textContent = "";
-  document.getElementById("searchInput").value = "";
-});
+function renderMovies(movies) {
+  movieList.innerHTML = "";
+
+  movies.forEach(movie => {
+    const poster =
+      movie.Poster !== "N/A"
+        ? movie.Poster
+        : "https://via.placeholder.com/300x450?text=No+Image";
+
+    movieList.innerHTML += `
+      <div class="movie-card">
+        <img src="${poster}" alt="${movie.Title}">
+        <h3>${movie.Title}</h3>
+        <p>${movie.Year}</p>
+      </div>
+    `;
+  });
+}
+
+function applyFilters() {
+  let sortedMovies = [...moviesData];
+
+  if (sortSelect.value === "az") {
+    sortedMovies.sort((a, b) => a.Title.localeCompare(b.Title));
+  }
+
+  if (sortSelect.value === "za") {
+    sortedMovies.sort((a, b) => b.Title.localeCompare(a.Title));
+  }
+
+  if (yearSort.value === "new") {
+    sortedMovies.sort((a, b) => b.Year - a.Year);
+  }
+
+  if (yearSort.value === "old") {
+    sortedMovies.sort((a, b) => a.Year - b.Year);
+  }
+
+  renderMovies(sortedMovies);
+}
